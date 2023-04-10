@@ -13,14 +13,17 @@ pizzas = [
      'classic'),
     (10, 'Vegan Bolognese pizza', 180, 'Vegetable Meat Eat Me At+ Thyme + Tomatoes + Garlic + Onions', 'vegan')
 ]
-print('Hello, darling! What are you want to eat?')
 def choice_id():
-    choice = int(input('If you already know a menu, enter id of pizza (1 - 10): '))
-    if 1 <= choice <= 10:
-        print(
-            f'----------\nName: {pizzas[choice - 1][1]}\nPrice: {pizzas[choice - 1][2]}\nIng: {pizzas[choice - 1][3]}')
-    elif choice <= 0 or choice >= 11:
-        raise MyException('Wrong id')
+    try:
+        choice = int(input('Enter id of pizza (1 - 10): '))
+        if 1 <= choice <= 10:
+            print(
+                f'----------\nName: {pizzas[choice - 1][1]}\nPrice: {pizzas[choice - 1][2]}\nIng: {pizzas[choice - 1][3]}')
+        elif choice <= 0 or choice >= 11:
+            raise MyException('Wrong id')
+    except MyException:
+        print('Wrong answer, please try again')
+        choice_id()
 def choices():
     choice = input('Enter "y" for Yes if you want to see a full menu or "n" for Next: ')
     if choice == 'y':
@@ -35,25 +38,50 @@ def choices():
             choice_id()
     elif (choice != 'n' or choice != 'y') and type(choice) == str:
         raise MyException('Wrong answer, please try again')
-try:
-    choices()
-except MyException as e:
-    print(f'Catch an error: {e}')
-    choices()
 
-def lower_price(price):
+def lower_price(pizzas, price):
     """
     задача: відсортувати піци за ціною
     користувач вводить ціну, і треба вивести всі піци, що менше за цю ціну
     :return: список кортежів з піцами
     """
+    return [pizza for pizza in pizzas if pizza[2] <= price]
 
-def pizza_category(category):
+def pizza_category(pizzas, category):
     """
     задача: відсортувати піци за категорією
     користувач вводить категорію, і треба вивести всі піци за цією категорією
     :return: список кортежів з піцами
     """
+    return [pizza for pizza in pizzas if pizza[4] == category]
+
+
+print('Hello, darling! What are you want to eat?\nIf you want to see a menu enter "m".\n'
+      'If you want another option, enter"n"')
+choice = input(':')
+match choice:
+    case 'm':
+        print('For full menu enter "f"\n For filtering enter "p" for price or "c" for category')
+        choice = input(':')
+        match choice:
+            case 'f':
+                for i in pizzas:
+                    i = list(i)
+                    print(f'----------\nName: {i[1]}\nPrice: {i[2]}\nIng: {i[3]}')
+            case 'p':
+                price = int(input('Please enter max value:'))
+                for i in lower_price(pizzas, price):
+                    i = list(i)
+                    print(f'----------\nName: {i[1]}\nPrice: {i[2]}\nIng: {i[3]}')
+            case 'c':
+                category = input('Please enter category (classic, vegan, fishy:')
+                for i in pizza_category(pizzas, category):
+                    i = list(i)
+                    print(f'----------\nName: {i[1]}\nPrice: {i[2]}\nIng: {i[3]}')
+    case 'n':
+        choice_id()
+    case _:
+        raise MyException('Wrong answer, please try again')
 
 
 
