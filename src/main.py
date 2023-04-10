@@ -16,26 +16,21 @@ pizzas = [
 ]
 
 f = Functional()
-print('Hello, darling! What are you want to eat?\nIf you want to see a menu enter "m".\n'
-      'If you want another option, enter"n"')
-choice = input(':')
-match choice:
-    case 'm':
-        print('For full menu enter "f"\n For filtering enter "p" for price or "c" for category')
-        choice = input(':')
-        match choice:
-            case 'f':
-                f.read(pizzas)
-            case 'p':
-                price = int(input('Please enter max value:'))
-                f.read( f.lower_price(pizzas, price))
-            case 'c':
-                category = input('Please enter category (classic, vegan, fishy:')
-                f.read(f.pizza_category(pizzas, category))
-    case 'n':
-        f.choice_id(pizzas)
-    case _:
-        raise MyException('Wrong answer, please try again')
+print('Hello, darling! What are you want to eat?\nIf you want to see a menu enter "m".\n' 
+      'If you want another option, enter "n":', end='')
+choice = input()
+try:
+    match choice:
+        case 'm':
+            f.choices(pizzas)
+        case 'n':
+            f.choice_id(pizzas)
+        case _:
+            raise MyException('Wrong answer, please try again')
+except MyException:
+    print('Program is stoped')
+
+
 
 
 

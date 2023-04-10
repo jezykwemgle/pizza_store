@@ -1,7 +1,6 @@
 import json
 from exeptions import MyException
 
-
 class Functional:
     def __init__(self):
         pass
@@ -33,36 +32,28 @@ class Functional:
             elif choice <= 0 or choice >= 11:
                 raise MyException('Wrong id')
         except MyException:
-            print('Wrong answer, please try again')
+            print('Please try again')
             self.choice_id(listt)
 
     def choices(self, listt):
-        choice = input('Enter "y" for Yes if you want to see a full menu or "n" for Next: ')
-        if choice == 'y':
-            for i in listt:
-                i = list(i)
-                print(f'----------\nName: {i[1]}\nPrice: {i[2]}\nIng: {i[3]}')
-        elif choice == 'n':
-            try:
-                self.choice_id(listt)
-            except MyException as e:
-                print(f'Catch an error: {e}')
-                self.choice_id(listt)
-        elif (choice != 'n' or choice != 'y') and type(choice) == str:
-            raise MyException('Wrong answer, please try again')
+        try:
+            choice = input('For full menu enter "f"\n For filtering enter "p" for price or "c" for category:')
+            if choice == 'p':
+                price = int(input('Please enter max value:'))
+                self.read(self.lower_price(listt, price))
+            elif choice == 'c':
+                category = input('Please enter category (classic, vegan, fishy:')
+                self.read(self.pizza_category(listt, category))
+            elif choice == 'f':
+                self.read(listt)
+            elif (choice != 'p' or choice != 'c' or choice != 'f') and type(choice) == str:
+                raise MyException('Wrong answer')
+        except MyException:
+            print('Please try again')
+            self.choices(listt)
 
     def lower_price(self, listt, price):
-        """
-        задача: відсортувати піци за ціною
-        користувач вводить ціну, і треба вивести всі піци, що менше за цю ціну
-        :return: список кортежів з піцами
-        """
         return [pizza for pizza in listt if pizza[2] <= price]
 
     def pizza_category(self, listt, category):
-        """
-        задача: відсортувати піци за категорією
-        користувач вводить категорію, і треба вивести всі піци за цією категорією
-        :return: список кортежів з піцами
-        """
         return [pizza for pizza in listt if pizza[4] == category]
