@@ -1,6 +1,3 @@
-from typing import Tuple, Any
-
-
 class Pizza:
     def __init__(self, pizza_id, name, price, ingredients, category):
         self.pizza_id = pizza_id
