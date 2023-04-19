@@ -1,4 +1,4 @@
-from exeptions import MyException
+from helpers.exeptions import MyException
 from pizza import Pizza
 
 class PizzaRepository:

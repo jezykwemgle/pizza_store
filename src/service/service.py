@@ -1,4 +1,4 @@
-from pizza_repository import PizzaRepository
+from repository.repository import PizzaRepository
 
 class PizzaService:
 

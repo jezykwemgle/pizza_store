@@ -1,4 +1,4 @@
-from service import PizzaService
+from service.service import PizzaService
 
 service = PizzaService()
 pizzas = service.lower_price(170)

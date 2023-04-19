@@ -30,7 +30,6 @@ class Pizza:
     def price(self, new_price):
         self.__price = new_price
 
-
     @property
     def ingredients(self):
         return self.__ingredients
@@ -50,6 +49,3 @@ class Pizza:
     def __str__(self):
         return f'Pizza(id: {self.pizza_id}, name: {self.name}, price: {self.price}, ingredients: {self.ingredients}, ' \
                f'category: {self.category})'
-
-
-
