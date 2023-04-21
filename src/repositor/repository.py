@@ -1,5 +1,5 @@
 from helpers.exeptions import MyException
-from pizza import Pizza
+from repositor.pizza import Pizza
 
 class PizzaRepository:
 
@@ -13,7 +13,7 @@ class PizzaRepository:
             Pizza(6, 'Lorenz', 160, 'Veal sous vide + Chicken sous-vide + Mozzarella cheese + Olives + Champions + '
                   'Sweet pepper', 'classic'),
             Pizza(7, 'Nautical', 205, 'Cocktail shrimps + Squid + Mussels + Octopus + Mozzarella cheese + Cream',
-                  'without meet'),
+                  'fishy'),
             Pizza(8, 'Alpine', 190, 'Smoked chicken + Mozzarella cheese + Champions + Parsley', 'classic'),
             Pizza(9, 'El Toro', 200, 'Veal sous vide + Mozzarella cheese + Champions + Sun-dried tomatoes + '
                   'Blue onions', 'classic'),
@@ -53,3 +53,7 @@ class PizzaRepository:
             return pizza
         else:
             return None
+if __name__ == '__main__':
+    r = PizzaRepository()
+    for i in r.get_all_pizzas():
+        print(i)
