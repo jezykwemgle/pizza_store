@@ -33,7 +33,7 @@ class PizzaRepository:
                 return pizza
         return None
 
-    def add_pizza(self, pizza):
+    def add_pizza(self, pizza: Pizza):
         pizza.pizza_id = self.__get_new_id()
         self.__pizzas.append(pizza)
         return pizza
@@ -41,7 +41,7 @@ class PizzaRepository:
     def delete_pizza(self, pizza_id):
         self.__pizzas.remove(self.get_by_id(pizza_id))
 
-    def update_pizza(self, pizza_id, new_pizza):
+    def update_pizza(self, pizza_id, new_pizza: Pizza):
         pizza = self.get_by_id(pizza_id)
         if pizza is None:
             raise MyException("Дорогий, ти шо задумав, такої піци не існує")
