@@ -1,4 +1,5 @@
 from service.service import PizzaService
+from helpers.helpers import print_pizzas
 
 service = PizzaService()
 print('Hello, darling! Welcome to our pizza store!')
@@ -9,14 +10,21 @@ while True:
     print('*******************************')
     choice = input('Please choose the option:')
     if choice == 'f':
-        service.print_pizzas(service.get_all_pizzas())
+        print_pizzas(service.get_all_pizzas())
     elif choice == 'id':
-        choice = int(input('Enter pizza id : '))
-        print(service.get_pizza_by_id(choice))
+        choice = input('Enter pizza id : ')
+        r = service.get_pizza_by_id(choice)
+        if r is not None:
+            print(service.get_pizza_by_id(choice))
     elif choice == 'fp':
-        service.print_pizzas(service.lower_price())
+        choice = input('Enter the upper limit:')
+        r = service.lower_price(choice)
+        if r is not None:
+            print_pizzas(r)
+        else:
+            pass
     elif choice == 'fc':
-        service.print_pizzas(service.pizza_category())
+        print_pizzas(service.pizza_category())
     elif choice == 'c':
         print(*commands, sep='\n')
     elif choice == '':

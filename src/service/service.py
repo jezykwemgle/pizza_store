@@ -9,27 +9,32 @@ class PizzaService:
 
     def get_pizza_by_id(self, choice):
         try:
-            result = self.__repository.get_by_id(choice)
-            if result is not None:
-                return result
-            elif result is None:
-                raise MyException('Wrong id')
-        except MyException:
-            print('Please try again')
-            self.get_pizza_by_id()
+            if choice.isdigit():
+                choice = int(choice)
+                result = self.__repository.get_by_id(choice)
+                if result is not None:
+                    return result[0]
+                elif result is None:
+                    raise MyException('Wrong id. Please try again')
+            else:
+                raise MyException('Wrong id. Please try again')
+        except MyException as e:
+            print(e)
 
     def get_all_pizzas(self):
         return self.__repository.get_all_pizzas()
 
-    # def delete_pizza(self, pizza_id):
-    #     pizza = self.__repository.get_by_id(pizza_id)
-    #     pizza.isDeleted = True
-    #     self.__repository.update_pizza(pizza)
-
-    def lower_price(self):
+    def lower_price(self, price):
         pizzas = self.__repository.get_all_pizzas()
-        price = int(input('Enter the upper limit:'))
-        return [pizza for pizza in pizzas if pizza.price <= price]
+        try:
+            if price.isdigit():
+                price = int(price)
+                return [pizza for pizza in pizzas if int(pizza.price) <= price]
+            else:
+                raise MyException('Wrong price. Please try again')
+        except MyException as e:
+            print(e)
+            return None
 
     def pizza_category(self):
         pizzas = self.__repository.get_all_pizzas()
@@ -39,5 +44,4 @@ class PizzaService:
 
 if __name__ == '__main__':
     s = PizzaService()
-    for i in s.get_all_pizzas():
-        print(i)
+    print(s.get_pizza_by_id(10))
