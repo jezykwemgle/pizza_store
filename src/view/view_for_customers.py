@@ -21,10 +21,11 @@ while True:
         r = service.lower_price(choice)
         if r is not None:
             print_pizzas(r)
-        else:
-            pass
     elif choice == 'fc':
-        print_pizzas(service.pizza_category())
+        choice = input('Enter category. Available are classic, vegetarian, fishy, vegan:')
+        r = service.pizza_category(choice)
+        if r is not None:
+            print_pizzas(r)
     elif choice == 'c':
         print(*commands, sep='\n')
     elif choice == '':

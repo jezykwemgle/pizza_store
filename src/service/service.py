@@ -36,9 +36,8 @@ class PizzaService:
             print(e)
             return None
 
-    def pizza_category(self):
+    def pizza_category(self, category):
         pizzas = self.__repository.get_all_pizzas()
-        category = input('Enter category. Available are classic, vegetarian, fishy, vegan:')
         return [pizza for pizza in pizzas if pizza.category == category]
 
 
