@@ -7,9 +7,8 @@ class PizzaService:
     def __init__(self):
         self.__repository = PizzaRepository()
 
-    def get_pizza_by_id(self):
+    def get_pizza_by_id(self, choice):
         try:
-            choice = int(input('Enter pizza id : '))
             result = self.__repository.get_by_id(choice)
             if result is not None:
                 return result
@@ -37,10 +36,6 @@ class PizzaService:
         category = input('Enter category. Available are classic, vegetarian, fishy, vegan:')
         return [pizza for pizza in pizzas if pizza.category == category]
 
-    @staticmethod
-    def print_pizzas(pizzas):
-        for i in pizzas:
-            print(i)
 
 if __name__ == '__main__':
     s = PizzaService()

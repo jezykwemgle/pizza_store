@@ -11,7 +11,8 @@ while True:
     if choice == 'f':
         service.print_pizzas(service.get_all_pizzas())
     elif choice == 'id':
-        service.get_pizza_by_id()
+        choice = int(input('Enter pizza id : '))
+        print(service.get_pizza_by_id(choice))
     elif choice == 'fp':
         service.print_pizzas(service.lower_price())
     elif choice == 'fc':
