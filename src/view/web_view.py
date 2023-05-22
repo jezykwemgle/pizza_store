@@ -1,6 +1,7 @@
 from src.service .service import PizzaService
 from flask import Flask
 from flask import url_for
+import json
 
 app = Flask(__name__)
 
@@ -16,10 +17,7 @@ def main_paige():
 @app.route('/full-menu/')
 def full_menu():
     serv = PizzaService()
-    pizzas = []
-    for item in serv.get_all_pizzas():
-        pizzas.append(str(item))
-    return '<br>'.join(pizzas)
+    return json.dumps(serv.get_all_pizzas())
 
 
 @app.route('/filtering/')
@@ -34,26 +32,19 @@ def filtering():
 @app.route('/id/<id_pizza>')
 def id_filter(id_pizza=1):
     serv = PizzaService()
-    pizza = serv.get_pizza_by_id(id_pizza)
-    return f'{pizza.name} {pizza.price} hrn<br>{pizza.category}: {pizza.ingredients}'
+    return json.dumps(serv.get_pizza_by_id(id_pizza))
 
 
 @app.route('/price/<limit>')
 def price_filter(limit=0):
     serv = PizzaService()
-    pizzas = []
-    for item in serv.lower_price(limit):
-        pizzas.append(str(item))
-    return '<br>'.join(pizzas)
+    return json.dumps(serv.lower_price(limit))
 
 
 @app.route('/category/<category>')
 def category_filter(category='classic'):
     serv = PizzaService()
-    pizzas = []
-    for item in serv.pizza_category(category):
-        pizzas.append(str(item))
-    return '<br>'.join(pizzas)
+    return json.dumps(serv.pizza_category(category))
 
 
 if __name__ == '__main__':
