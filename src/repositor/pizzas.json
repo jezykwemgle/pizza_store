@@ -1,0 +1,74 @@
+{
+    "Pizzas": [
+        {
+            "id": 1,
+            "name": "Margarita",
+            "price": 100,
+            "ingredients": "Tomato + cheese",
+            "category": "vegetarian"
+        },
+        {
+            "id": 2,
+            "name": "Vege",
+            "price": 170,
+            "ingredients": "Tomato + Vege cheese + Paprica",
+            "category": "vegetarian"
+        },
+        {
+            "id": 3,
+            "name": "Pizza Classic",
+            "price": 160,
+            "ingredients": "Tomato + Ham + Cheese + Parsley",
+            "category": "classic"
+        },
+        {
+            "id": 4,
+            "name": "Meat boom",
+            "price": 200,
+            "ingredients": "Salami + Ham + Bacon + Veal sous vide + Mozzarella cheese + Onions",
+            "category": "classic"
+        },
+        {
+            "id": 5,
+            "name": "Pepperoni",
+            "price": 180,
+            "ingredients": "Pepperoni + Mozzarella Cheese + Chili pepper",
+            "category": "classic"
+        },
+        {
+            "id": 6,
+            "name": "Lorenz",
+            "price": 160,
+            "ingredients": "Veal sous vide + Chicken sous-vide + Mozzarella cheese + Olives + Champions + Sweet pepper",
+            "category": "classic"
+        },
+        {
+            "id": 7,
+            "name": "Nautical",
+            "price": 205,
+            "ingredients": "Cocktail shrimps + Squid + Mussels + Octopus + Mozzarella cheese + Cream",
+            "category": "fishy"
+        },
+        {
+            "id": 8,
+            "name": "Alpine",
+            "price": 190,
+            "ingredients": "Smoked chicken + Mozzarella cheese + Champions + Parsley",
+            "category": "classic"
+        },
+        {
+            "id": 9,
+            "name": "El Toro",
+            "price": 200,
+            "ingredients": "Veal sous vide + Mozzarella cheese + Champions + Sun-dried tomatoes + Blue onions",
+            "category": "classic"
+        },
+        {
+            "id": 10,
+            "name": "Vegan Bolognese pizza",
+            "price": 180,
+            "ingredients": "Vegetable Meat Eat Me At + Thyme + Tomatoes + Garlic + Onions",
+            "category": "vegan"
+        }
+    ]
+}
