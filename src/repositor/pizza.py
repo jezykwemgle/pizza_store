@@ -46,6 +46,9 @@ class Pizza:
     def category(self, new_category):
         self.__category = new_category
 
+    # def __str__(self):
+    #     return f'Pizza(id: {self.pizza_id}, name: {self.name}, price: {self.price}, ingredients: {self.ingredients}, ' \
+    #            f'category: {self.category})'
     def __str__(self):
-        return f'Pizza(id: {self.pizza_id}, name: {self.name}, price: {self.price}, ingredients: {self.ingredients}, ' \
-               f'category: {self.category})'
+        return f"'id': {self.pizza_id}, 'name': {self.name}, 'price': {self.price}, 'ingredients': {self.ingredients}, " \
+               f"'category': {self.category}"
