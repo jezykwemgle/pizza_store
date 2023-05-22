@@ -12,9 +12,9 @@ class PizzaService:
 
     def get_pizza_by_id(self, choice):
         try:
-            if type(choice) == int:
+            if type(int(choice)) == int:
                 choice = int(choice)
-                result = self.__repository.get_by_id(choice)
+                result = self.__repository.get_by_id(int(choice))
                 if result is not None:
                     return result[0]
                 elif result is None:
@@ -23,17 +23,21 @@ class PizzaService:
                 raise MyException('Wrong id. Please try again')
         except MyException as e:
             print(e)
+        except ValueError:
+            print('Wrong type of id')
 
     def lower_price(self, price):
         pizzas = self.__repository.get_all_pizzas()
         try:
-            if type(price) == int:
-                return [pizza for pizza in pizzas if int(pizza['price']) <= price]
+            if type(int(price)) == int:
+                return [pizza for pizza in pizzas if int(pizza['price']) <= int(price)]
             else:
                 raise MyException('Wrong price. Please try again')
         except MyException as e:
             print(e)
             return None
+        except ValueError:
+            print('Wrong type of price')
 
     def pizza_category(self, category):
         pizzas = self.__repository.get_all_pizzas()
