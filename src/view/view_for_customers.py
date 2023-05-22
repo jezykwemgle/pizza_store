@@ -1,5 +1,5 @@
-from service.service import PizzaService
-from helpers.helpers import print_pizzas
+from src.service .service import PizzaService
+from src.helpers.helpers import print_pizzas
 
 service = PizzaService()
 print('Hello, darling! Welcome to our pizza store!')

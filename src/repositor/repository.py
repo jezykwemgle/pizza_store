@@ -1,6 +1,6 @@
-from helpers.exeptions import MyException
-from repositor.pizza import Pizza
-from helpers.helpers import get_data_csv, set_data_csv, from_class_to_list
+from src.helpers.exeptions import MyException
+from src.repositor.pizza import Pizza
+from src.helpers.helpers import get_data_csv, set_data_csv, from_class_to_list
 
 class PizzaRepository:
 

@@ -1,5 +1,5 @@
 import csv
-from repositor.pizza import Pizza
+from src.repositor.pizza import Pizza
 
 def print_pizzas(pizzas):
     for pizza in pizzas:

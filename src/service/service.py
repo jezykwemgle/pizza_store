@@ -1,5 +1,5 @@
-from repositor.repository import PizzaRepository
-from helpers.exeptions import MyException
+from src.repositor.repository import PizzaRepository
+from src.helpers.exeptions import MyException
 
 
 class PizzaService:
